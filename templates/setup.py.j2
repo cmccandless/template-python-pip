@@ -1,0 +1,26 @@
+import setuptools
+from src import VERSION
+
+
+if __name__ == '__main__':
+    setuptools.setup(
+        name="{{ name }}",
+        version=VERSION,
+        author="{{ author_name }}",
+        author_email="{{ author_email }}",
+        description="{{ description }}",
+        url="{{ repository }}",
+        packages=setuptools.find_packages(),
+        classifiers=(
+            "Programming Language :: Python :: 3",
+            "License :: OSI Approved :: MIT License",
+            "Operating System :: OS Independent",
+        ),{% if console_script %}
+        entry_points={
+            "console_scripts": [
+                "{{ name }} = src.__main__:main",
+            ]
+        },{% endif %}
+        install_requires=[],
+        include_package_data=True,
+    )
