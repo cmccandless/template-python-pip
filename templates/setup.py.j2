@@ -2,6 +2,11 @@ import setuptools
 from src import VERSION
 
 
+def load_readme():
+    with open('README.md') as f:
+        return f.read()
+
+
 if __name__ == '__main__':
     setuptools.setup(
         name="{{ name }}",
@@ -9,6 +14,7 @@ if __name__ == '__main__':
         author="{{ author_name }}",
         author_email="{{ author_email }}",
         description="{{ description }}",
+        long_description=load_readme(),
         url="{{ repository }}",
         packages=setuptools.find_packages(),
         classifiers=(
