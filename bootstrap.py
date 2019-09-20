@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from datetime import datetime
 from jinja2 import (
     FileSystemLoader,
     Environment,
@@ -141,6 +142,7 @@ if __name__ == '__main__':
                 with open(opts.description) as f:
                     opts.description = f.read()
             data = opts.__dict__
+        data['date'] = datetime.now()
         for template_name in os.listdir(template_dir):
             filename = template_name_to_filename(template_name)
             outdir = template_mappings.get(filename, '.')
